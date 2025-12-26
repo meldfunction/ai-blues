@@ -249,25 +249,41 @@ const Components = {
         </div>
     `,
 
-    // Placeholder pages for other sections
+    // Systems View - full content
     systems: () => `
         <div class="fade-in">
             <nav class="breadcrumb">
                 <a href="#home">Home</a> / Systems View
             </nav>
             <div class="content">
-                <h1>Why This Is Happening</h1>
-                <p class="text-muted">The systems view - understanding the earthquake</p>
-                
-                <div class="card">
-                    <p>Full systems analysis coming soon. For now:</p>
-                    <ul>
-                        <li>Abstraction layers collapsing (software → SaaS → agents → ?)</li>
-                        <li>Career ladders dissolving</li>
-                        <li>Skills commodifying faster than reskilling</li>
-                        <li>Feedback loops accelerating past adaptation speed</li>
-                        <li>Fork in outcomes (walmart greeter vs youtube dad)</li>
-                    </ul>
+                <h1>${SITE_DATA.systems.title}</h1>
+                <p class="text-muted" style="font-size: 1.125rem;">${SITE_DATA.systems.subtitle}</p>
+
+                <p style="margin: 2rem 0;">${SITE_DATA.systems.intro}</p>
+
+                ${SITE_DATA.systems.systemsCollapsing.map(system => `
+                    <div class="card">
+                        <h2 style="margin-top: 0;">System ${system.number}: ${system.title}</h2>
+                        <p><strong>What's happening:</strong> ${system.whatsHappening}</p>
+                        ${system.pattern ? `<p><strong>The pattern:</strong> ${system.pattern}</p>` : ''}
+                        ${system.problem ? `<p><strong>The problem:</strong> ${system.problem}</p>` : ''}
+                        ${system.probably ? `<p><strong>Probably:</strong> ${system.probably}</p>` : ''}
+                        ${system.shift ? `<p><strong>The shift:</strong> ${system.shift}</p>` : ''}
+                        ${system.escape ? `<p><strong>The escape:</strong> ${system.escape}</p>` : ''}
+                        ${system.response ? `<p><strong>The response:</strong> ${system.response}</p>` : ''}
+                        ${system.walmartGreeterLacks ? `<p><strong>What walmart greeter lacks:</strong> ${system.walmartGreeterLacks}</p>` : ''}
+                        ${system.interventionPoint ? `<p><strong>The intervention point:</strong> ${system.interventionPoint}</p>` : ''}
+                    </div>
+                `).join('')}
+
+                <div class="card" style="background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); color: white;">
+                    <h2 style="color: white; margin-top: 0;">The Convergence</h2>
+                    <p style="font-size: 1.125rem; margin: 0;">${SITE_DATA.systems.convergence}</p>
+                </div>
+
+                <div class="card mt-lg" style="background: #fffbf5; border: 2px solid var(--color-primary);">
+                    <h2 style="margin-top: 0;">The Strategic Response</h2>
+                    <p style="font-size: 1.125rem;"><strong>${SITE_DATA.systems.strategicResponse}</strong></p>
                 </div>
 
                 <div class="related-links mt-lg">
@@ -276,6 +292,7 @@ const Components = {
                         <li><a href="#discover">How to Discover What's Needed</a></li>
                         <li><a href="#diagnostic">Find Your Specific Path</a></li>
                         <li><a href="#signals">Build Signal Networks</a></li>
+                        <li><a href="#amish">What the Amish Know</a></li>
                     </ul>
                 </div>
             </div>
@@ -288,27 +305,57 @@ const Components = {
                 <a href="#home">Home</a> / What the Amish Know
             </nav>
             <div class="content">
-                <h1>What the Amish Know</h1>
-                <p class="text-muted">The 200-year perspective on technology disruption</p>
-                
-                <div class="card">
-                    <h2>They're not technophobes - they're the most sophisticated technology adopters in America</h2>
-                    <p>Full amish wisdom section coming soon. Key principles:</p>
-                    <ul>
-                        <li>Evaluate technology collectively before adopting</li>
-                        <li>Use mainstream society as beta testers</li>
-                        <li>Modify technology to fit values ("amish hacking")</li>
-                        <li>Being "behind" is strategic (50-year test cycles)</li>
-                        <li>"You can't do it alone" - collective infrastructure survives</li>
-                    </ul>
+                <h1>${SITE_DATA.amish.title}</h1>
+                <p class="text-muted" style="font-size: 1.125rem;">${SITE_DATA.amish.subtitle}</p>
+
+                <p style="margin: 2rem 0; font-size: 1.125rem;"><strong>${SITE_DATA.amish.intro}</strong></p>
+
+                <h2>Here's what they do that mainstream society doesn't:</h2>
+
+                ${SITE_DATA.amish.principles.map(principle => `
+                    <div class="card">
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div class="exercise-number">${principle.number}</div>
+                            <div style="flex: 1;">
+                                <h3 style="margin: 0 0 0.5rem 0;">${principle.title}</h3>
+                                <p>${principle.description}</p>
+                            </div>
+                        </div>
+                    </div>
+                `).join('')}
+
+                <div class="card mt-lg" style="background: linear-gradient(135deg, #f8f6f3, #fff); border: 2px solid var(--color-primary);">
+                    <h2 style="margin-top: 0;">The Question They Ask</h2>
+                    <p style="font-size: 1.5rem; text-align: center; margin: 1rem 0; color: var(--color-primary-dark);">
+                        <strong>"${SITE_DATA.amish.coreQuestion}"</strong>
+                    </p>
+                    <p style="margin-top: 1.5rem;">${SITE_DATA.amish.coreQuestionExplanation}</p>
                 </div>
 
                 <div class="card" style="background: #fffbf5;">
-                    <h3>The Question They Ask</h3>
-                    <p style="font-size: 1.125rem;">
-                        Not: "What does this let me do?"<br>
-                        But: <strong>"What does this do to how we relate?"</strong>
-                    </p>
+                    <h3>The Principle</h3>
+                    <p style="font-size: 1.125rem; font-style: italic;">${SITE_DATA.amish.principle}</p>
+                </div>
+
+                <h2 class="mt-lg">What You Can Do (Without Joining the Amish)</h2>
+                <div class="card">
+                    <ul>
+                        ${SITE_DATA.amish.practicalSteps.map(step => `<li>${step}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="card mt-lg" style="background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); color: white;">
+                    <h3 style="color: white; margin-top: 0;">The Amish Proved</h3>
+                    <p style="font-size: 1.125rem; margin: 0;">${SITE_DATA.amish.conclusion}</p>
+                </div>
+
+                <div class="related-links mt-lg">
+                    <h3>Related Sections</h3>
+                    <ul>
+                        <li><a href="#systems">The Systems View</a> - Understand why this is happening</li>
+                        <li><a href="#signals">Building Signal Networks</a> - Build collective infrastructure</li>
+                        <li><a href="#discover">How to Discover What's Needed</a> - Find your path</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -320,19 +367,118 @@ const Components = {
                 <a href="#home">Home</a> / Building Signal Networks
             </nav>
             <div class="content">
-                <h1>Building Signal Networks</h1>
-                <p class="text-muted">How to navigate once you've found the path</p>
-                
+                <h1>${SITE_DATA.signals.title}</h1>
+                <p class="text-muted" style="font-size: 1.125rem;">${SITE_DATA.signals.subtitle}</p>
+
+                <p style="margin: 2rem 0;">${SITE_DATA.signals.intro}</p>
+
                 <div class="card">
-                    <h2>What Are Signals?</h2>
-                    <p>Accumulated knowledge from people who've navigated the path you're trying to navigate:</p>
+                    <h2 style="margin-top: 0;">${SITE_DATA.signals.whatAreSignals.title}</h2>
+                    <p>${SITE_DATA.signals.whatAreSignals.description}</p>
                     <ul>
-                        <li>Knowledge that a path exists</li>
-                        <li>How to get started</li>
-                        <li>Who to learn from</li>
-                        <li>How to navigate failure</li>
-                        <li>When to make the jump</li>
+                        ${SITE_DATA.signals.whatAreSignals.examples.map(ex => `<li>${ex}</li>`).join('')}
                     </ul>
+                </div>
+
+                <div class="card">
+                    <h2 style="margin-top: 0;">${SITE_DATA.signals.whereSignalsComeFrom.title}</h2>
+                    <p>${SITE_DATA.signals.whereSignalsComeFrom.amishExample}</p>
+
+                    <h3>Signal networks are:</h3>
+                    <ul>
+                        ${SITE_DATA.signals.whereSignalsComeFrom.signalNetworksAre.map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+
+                    <h3>Signal networks are NOT:</h3>
+                    <ul>
+                        ${SITE_DATA.signals.whereSignalsComeFrom.signalNetworksAreNot.map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <h2 class="mt-lg">How to Build Signal Networks (Practical Steps)</h2>
+
+                ${SITE_DATA.signals.layers.map(layer => `
+                    <div class="card">
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div class="exercise-number">${layer.number}</div>
+                            <div style="flex: 1;">
+                                <h3 style="margin: 0 0 0.5rem 0;">${layer.title}</h3>
+                                <p><em>${layer.timeline}</em></p>
+                                <p>${layer.description}</p>
+
+                                ${layer.howToIdentify ? `
+                                    <p><strong>How to identify good signal networks:</strong></p>
+                                    <ul>${layer.howToIdentify.map(item => `<li>${item}</li>`).join('')}</ul>
+                                ` : ''}
+
+                                ${layer.structure ? `
+                                    <p><strong>Structure:</strong></p>
+                                    <ul>${layer.structure.map(item => `<li>${item}</li>`).join('')}</ul>
+                                ` : ''}
+
+                                ${layer.whoToInvite ? `
+                                    <p><strong>Who to invite:</strong></p>
+                                    <ul>${layer.whoToInvite.map(item => `<li>${item}</li>`).join('')}</ul>
+                                ` : ''}
+
+                                ${layer.startSimple ? `
+                                    <p><strong>Start simple:</strong></p>
+                                    <ul>${layer.startSimple.map(item => `<li>${item}</li>`).join('')}</ul>
+                                ` : ''}
+
+                                ${layer.whatToShare ? `
+                                    <p><strong>What to share:</strong></p>
+                                    <ul>${layer.whatToShare.map(item => `<li>${item}</li>`).join('')}</ul>
+                                ` : ''}
+
+                                ${layer.whyMatters ? `<p><strong>Why this matters:</strong> ${layer.whyMatters}</p>` : ''}
+
+                                ${layer.examples ? `
+                                    <p><strong>Examples:</strong></p>
+                                    <ul>${layer.examples.map(item => `<li>${item}</li>`).join('')}</ul>
+                                ` : ''}
+
+                                ${layer.whyLayer4 ? `<p><strong>Why this is layer 4:</strong> ${layer.whyLayer4}</p>` : ''}
+
+                                <p style="margin-top: 1rem;"><strong>Time investment:</strong> ${layer.timeInvestment}</p>
+                            </div>
+                        </div>
+                    </div>
+                `).join('')}
+
+                <div class="card mt-lg" style="background: linear-gradient(135deg, #f8f6f3, #fff); border: 2px solid var(--color-primary);">
+                    <h2 style="margin-top: 0;">${SITE_DATA.signals.metaPattern.title}</h2>
+                    <p>${SITE_DATA.signals.metaPattern.description}</p>
+                    <ul>
+                        ${SITE_DATA.signals.metaPattern.characteristics.map(char => `<li><strong>${char}</strong></li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="card" style="background: #fffbf5;">
+                    <h2 style="margin-top: 0;">${SITE_DATA.signals.whySignalsMatterMore.title}</h2>
+                    <p><strong>Credentials:</strong> ${SITE_DATA.signals.whySignalsMatterMore.credentials}</p>
+                    <p><strong>Signal networks:</strong> ${SITE_DATA.signals.whySignalsMatterMore.signalNetworks}</p>
+                    <p style="margin-top: 1rem;"><em>${SITE_DATA.signals.whySignalsMatterMore.fork}</em></p>
+                </div>
+
+                <div class="card mt-lg" style="background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); color: white;">
+                    <h2 style="color: white; margin-top: 0;">${SITE_DATA.signals.coreAnswer.title}</h2>
+                    <p style="font-style: italic; margin-bottom: 1rem;">"${SITE_DATA.signals.coreAnswer.question}"</p>
+                    <p style="font-size: 1.25rem; margin: 1rem 0;"><strong>${SITE_DATA.signals.coreAnswer.answer}</strong></p>
+                    <p><strong>You:</strong></p>
+                    <ol style="margin-left: 1.5rem;">
+                        ${SITE_DATA.signals.coreAnswer.steps.map(step => `<li>${step}</li>`).join('')}
+                    </ol>
+                    <p style="margin-top: 1rem;">${SITE_DATA.signals.coreAnswer.compounding}</p>
+                    <p><strong>${SITE_DATA.signals.coreAnswer.howToAvoid}</strong></p>
+                </div>
+
+                <div class="card mt-lg">
+                    <h3>Start Today:</h3>
+                    <ul>
+                        ${SITE_DATA.signals.coreAnswer.startToday.map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                    <p style="font-style: italic; margin-top: 1.5rem;">${SITE_DATA.signals.coreAnswer.conclusion}</p>
                 </div>
 
                 <div class="card" style="background: #fffbf5;">
@@ -342,7 +488,14 @@ const Components = {
                     <p><a href="#discover">Learn how to discover needs first →</a></p>
                 </div>
 
-                <p class="mt-lg">Full signal network building guide coming soon.</p>
+                <div class="related-links mt-lg">
+                    <h3>Related Sections</h3>
+                    <ul>
+                        <li><a href="#discover">How to Discover What's Needed</a> - Find opportunities before building networks</li>
+                        <li><a href="#amish">What the Amish Know</a> - Collective infrastructure that works</li>
+                        <li><a href="#diagnostic">Find Your Path</a> - Get profession-specific guidance</li>
+                    </ul>
+                </div>
             </div>
         </div>
     `,
