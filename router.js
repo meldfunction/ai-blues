@@ -9,8 +9,11 @@ const router = {
         'signals': Components.signals,
         'tech-worker': () => Components.pathPage(SITE_DATA.paths['tech-worker']),
         'business-owner': () => Components.pathPage(SITE_DATA.paths['business-owner']),
-        'parent-caregiver': () => Components.pathPage(SITE_DATA.paths['parent-caregiver'])
-        // Add more paths as needed
+        'parent-caregiver': () => Components.pathPage(SITE_DATA.paths['parent-caregiver']),
+        'middle-manager': () => Components.pathPage(SITE_DATA.paths['middle-manager']),
+        'young-person': () => Components.pathPage(SITE_DATA.paths['young-person']),
+        'late-career': () => Components.pathPage(SITE_DATA.paths['late-career']),
+        'skilled-trades': () => Components.pathPage(SITE_DATA.paths['skilled-trades'])
     },
 
     currentRoute: null,
