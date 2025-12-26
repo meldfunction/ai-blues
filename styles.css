@@ -231,7 +231,7 @@ strong { font-weight: 600; }
 /* === ENTRY POINTS (HOME PAGE) === */
 .entry-points {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-md);
     margin: var(--space-xl) 0;
 }
