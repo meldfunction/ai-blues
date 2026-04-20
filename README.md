@@ -1,7 +1,7 @@
 # How to Not Get the AI Blues
 
 A static site exploring practical paths for navigating AI disruption without losing your mind.
-
+[live demo](https://meldfunction.github.io/ai-blues/)
 ## Setup for GitHub Pages
 
 ### Deploy to GitHub Pages
